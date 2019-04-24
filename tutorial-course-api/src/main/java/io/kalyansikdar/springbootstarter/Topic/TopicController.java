@@ -1,21 +1,25 @@
 package io.kalyansikdar.springbootstarter.Topic;
 
-import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class TopicController {
 	
+	@Autowired
+	private TopicService topicService;
+	
 	@RequestMapping("/topics")
 	public List<Topic> getAllTopics(){
-		return Arrays.asList(
-				new Topic("Java Spring Boot", "JSB", "Java Spring Boot Tutorial"),
-				new Topic("Front-End Development", "FED", "Udemy Front-End Tutorial"),
-				new Topic("Python Django", "PD", "Youtube Python Django Tutorial"),
-				new Topic("AWS Tutorial", "AWS", "AWS Tutorial Certification")
-				);
+		return topicService.getAllTopics();
+	}
+	
+	@RequestMapping("/topic/{id}")
+	public Topic getTopic(@PathVariable String id) {
+		return topicService.getTopic(id);
 	}
 }
