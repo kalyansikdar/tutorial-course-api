@@ -1,25 +1,29 @@
-package io.kalyansikdar.springbootstarter.TopicJPA;
+package io.kalyansikdar.springbootstarter.Course;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import io.kalyansikdar.springbootstarter.TopicJPA.TopicJPA;
+
 @Entity
-public class TopicJPA {
+public class Course {
 	
 	private String name;
 	@Id
 	private String id;
 	private String description;
+	private TopicJPA topicJPA;
 	
-	public TopicJPA() {
+	public Course() {
 		
 	}
 	
-	public TopicJPA(String name, String id, String description) {
+	public Course(String name, String id, String description, String topicJPAId) {
 		super();
 		this.name = name;
 		this.id = id;
 		this.description = description;
+		this.setTopicJPA(new TopicJPA("", topicJPAId, ""));
 	}
 	
 	public String getName() {
@@ -40,5 +44,12 @@ public class TopicJPA {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
+	public TopicJPA getTopicJPA() {
+		return topicJPA;
+	}
+
+	public void setTopicJPA(TopicJPA topicJPA) {
+		this.topicJPA = topicJPA;
+	}
 }

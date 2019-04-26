@@ -13,30 +13,30 @@ import org.springframework.web.bind.annotation.RestController;
 public class TopicJPAController {
 	
 	@Autowired
-	private TopicJPAService topicService;
+	private TopicJPAService topicJPAService;
 	
-	@RequestMapping("/topics")
+	@RequestMapping("/topicsJPA")
 	public List<TopicJPA> getAllTopics(){
-		return topicService.getAllTopics();
+		return topicJPAService.getAllTopics();
 	}
 	
-	@RequestMapping("/topic/{id}")
+	@RequestMapping("/topicJPA/{id}")
 	public TopicJPA getTopic(@PathVariable String id) {
-		return topicService.getTopic(id);
+		return topicJPAService.getTopic(id);
 	}
 	
-	@RequestMapping(method=RequestMethod.POST, value="/topics")
+	@RequestMapping(method=RequestMethod.POST, value="/topicsJPA")
 	public void addTopic(@RequestBody TopicJPA topic) {
-		topicService.addTopics(topic);
+		topicJPAService.addTopics(topic);
 	}
 	
-	@RequestMapping(method=RequestMethod.PUT, value="/topics/{id}")
+	@RequestMapping(method=RequestMethod.PUT, value="/topicsJPA/{id}")
 	public void updateTopic(@PathVariable String id, @RequestBody TopicJPA topic) {
-		topicService.updateTopics(id, topic);
+		topicJPAService.updateTopics(id, topic);
 	}
 	
-	@RequestMapping(method=RequestMethod.DELETE, value="/topics/{id}")
+	@RequestMapping(method=RequestMethod.DELETE, value="/topicsJPA/{id}")
 	public void deleteTopic(@PathVariable String id) {
-		topicService.deleteTopic(id);
+		topicJPAService.deleteTopic(id);
 	}
 }
