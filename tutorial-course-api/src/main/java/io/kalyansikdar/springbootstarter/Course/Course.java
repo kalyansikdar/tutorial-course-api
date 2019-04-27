@@ -2,6 +2,7 @@ package io.kalyansikdar.springbootstarter.Course;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import io.kalyansikdar.springbootstarter.TopicJPA.TopicJPA;
 
@@ -12,6 +13,7 @@ public class Course {
 	@Id
 	private String id;
 	private String description;
+	@ManyToOne
 	private TopicJPA topicJPA;
 	
 	public Course() {
